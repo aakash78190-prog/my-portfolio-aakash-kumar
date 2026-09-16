@@ -1,0 +1,1885 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aakash Kumar - Developer Portfolio">
+<title>Aakash Kumar | Portfolio</title>
+
+<style>
+
+/* =====================================================
+   RESET & VARIABLES
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#050816;
+    --bg2:#0b1020;
+    --card:rgba(255,255,255,.06);
+    --card-hover:rgba(255,255,255,.1);
+    --text:#ffffff;
+    --muted:#a7afc0;
+    --primary:#7c5cff;
+    --secondary:#00d9ff;
+    --border:rgba(255,255,255,.1);
+    --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+body.light{
+    --bg:#f6f8fc;
+    --bg2:#ffffff;
+    --card:rgba(0,0,0,.04);
+    --card-hover:rgba(0,0,0,.07);
+    --text:#101522;
+    --muted:#596274;
+    --border:rgba(0,0,0,.1);
+}
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(124,92,255,.14),transparent 30%),
+        radial-gradient(circle at 90% 80%,rgba(0,217,255,.12),transparent 30%);
+}
+
+.blob{
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.25;
+    animation:moveBlob 12s infinite alternate ease-in-out;
+}
+
+.blob.one{
+    background:#7c5cff;
+    top:-150px;
+    left:-100px;
+}
+
+.blob.two{
+    background:#00d9ff;
+    right:-120px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes moveBlob{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(80px,50px) scale(1.2);
+    }
+}
+
+#particles{
+    position:absolute;
+    inset:0;
+}
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+section{
+    padding:110px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-heading .mini{
+    color:var(--secondary);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.section-heading h2{
+    font-size:clamp(32px,5vw,50px);
+    margin-top:8px;
+}
+
+.section-heading p{
+    max-width:600px;
+    margin:12px auto 0;
+    color:var(--muted);
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 25px;
+    border-radius:50px;
+    border:1px solid var(--border);
+    transition:.35s;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.btn-primary{
+    color:white;
+    border:none;
+    background:linear-gradient(100deg,var(--primary),var(--secondary));
+    box-shadow:0 10px 35px rgba(0,217,255,.15);
+}
+
+.glass{
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(20px);
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    transition:.4s;
+}
+
+header.scrolled{
+    background:rgba(5,8,22,.75);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+}
+
+body.light header.scrolled{
+    background:rgba(255,255,255,.8);
+}
+
+nav{
+    height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:var(--secondary);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:var(--muted);
+    font-weight:600;
+    position:relative;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    transform:translateX(-50%);
+    background:var(--secondary);
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--text);
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+    font-size:18px;
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+#home{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:130px;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    align-items:center;
+    gap:70px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:50px;
+    background:var(--card);
+    border:1px solid var(--border);
+    color:var(--secondary);
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    background:#35e39a;
+    border-radius:50%;
+    box-shadow:0 0 12px #35e39a;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,82px);
+    line-height:1;
+    letter-spacing:-4px;
+}
+
+.gradient{
+    background:linear-gradient(100deg,var(--primary),var(--secondary));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-role{
+    font-size:clamp(20px,3vw,28px);
+    margin:20px 0;
+    color:var(--muted);
+}
+
+#typing{
+    color:var(--secondary);
+}
+
+.hero-description{
+    max-width:650px;
+    color:var(--muted);
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:32px;
+    flex-wrap:wrap;
+}
+
+.socials{
+    display:flex;
+    gap:12px;
+    margin-top:30px;
+}
+
+.socials a{
+    width:43px;
+    height:43px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:1px solid var(--border);
+    border-radius:50%;
+    transition:.3s;
+}
+
+.socials a:hover{
+    transform:translateY(-5px);
+    background:var(--primary);
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile-area{
+    display:flex;
+    justify-content:center;
+}
+
+.profile-card{
+    width:min(390px,100%);
+    padding:35px;
+    border-radius:35px;
+    text-align:center;
+    position:relative;
+    animation:profileFloat 5s ease-in-out infinite;
+}
+
+@keyframes profileFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.profile-image{
+    width:220px;
+    height:220px;
+    margin:auto;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid transparent;
+    background:
+        linear-gradient(var(--bg2),var(--bg2)) padding-box,
+        linear-gradient(135deg,var(--primary),var(--secondary)) border-box;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.profile-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Temporary avatar */
+.profile-placeholder{
+    font-size:80px;
+    background:linear-gradient(135deg,#171d45,#073a4b);
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.profile-card h3{
+    font-size:25px;
+    margin-top:22px;
+}
+
+.profile-card p{
+    color:var(--muted);
+}
+
+.profile-tags{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:18px;
+}
+
+.profile-tags span{
+    padding:5px 12px;
+    border-radius:30px;
+    font-size:12px;
+    color:var(--secondary);
+    background:rgba(0,217,255,.08);
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-text h3{
+    font-size:32px;
+    margin-bottom:18px;
+}
+
+.about-text p{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:30px;
+}
+
+.stat{
+    padding:20px;
+    text-align:center;
+    border-radius:18px;
+}
+
+.stat h3{
+    font-size:28px;
+    color:var(--secondary);
+}
+
+.stat p{
+    font-size:12px;
+    margin:0;
+}
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.skill{
+    padding:27px;
+    border-radius:22px;
+    transition:.4s;
+}
+
+.skill:hover{
+    transform:translateY(-10px);
+    background:var(--card-hover);
+    border-color:rgba(0,217,255,.4);
+}
+
+.skill-icon{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.skill h3{
+    margin-bottom:8px;
+}
+
+.skill p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.progress{
+    height:6px;
+    background:rgba(255,255,255,.08);
+    margin-top:18px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    width:var(--level);
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    transform:translateX(-100%);
+    transition:1.3s;
+}
+
+.skill.show .progress span{
+    transform:translateX(0);
+}
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.project{
+    overflow:hidden;
+    border-radius:24px;
+    transition:.4s;
+}
+
+.project:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow);
+}
+
+.project-image{
+    height:190px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:65px;
+    background:
+        radial-gradient(circle at 20% 20%,#7c5cff55,transparent 40%),
+        linear-gradient(135deg,#11172c,#071f2c);
+}
+
+.project-content{
+    padding:25px;
+}
+
+.project-content h3{
+    font-size:21px;
+}
+
+.project-content p{
+    color:var(--muted);
+    font-size:14px;
+    margin:10px 0 18px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.tags span{
+    font-size:11px;
+    padding:5px 10px;
+    border-radius:20px;
+    background:rgba(124,92,255,.13);
+    color:#b9afff;
+}
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+.timeline{
+    max-width:850px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(var(--primary),var(--secondary));
+}
+
+.timeline-item{
+    margin-left:60px;
+    margin-bottom:25px;
+    padding:25px;
+    border-radius:20px;
+    position:relative;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-47px;
+    top:28px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--secondary);
+    box-shadow:0 0 18px var(--secondary);
+}
+
+.timeline-item small{
+    color:var(--secondary);
+}
+
+.timeline-item h3{
+    margin-top:5px;
+}
+
+.timeline-item p{
+    color:var(--muted);
+    margin-top:7px;
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-wrapper{
+    max-width:850px;
+    margin:auto;
+    padding:35px;
+    border-radius:28px;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+input,textarea{
+    width:100%;
+    padding:16px;
+    border-radius:13px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:var(--text);
+    outline:none;
+    transition:.3s;
+}
+
+input:focus,textarea:focus{
+    border-color:var(--secondary);
+    box-shadow:0 0 0 3px rgba(0,217,255,.08);
+}
+
+textarea{
+    min-height:160px;
+    margin-top:16px;
+    resize:vertical;
+}
+
+.contact-btn{
+    margin-top:16px;
+    width:100%;
+}
+
+#messageStatus{
+    text-align:center;
+    margin-top:15px;
+    color:var(--secondary);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:30px 0;
+    border-top:1px solid var(--border);
+    text-align:center;
+    color:var(--muted);
+}
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(45px);
+    transition:1s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =====================================================
+   SCROLL TOP
+===================================================== */
+
+#topBtn{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:999;
+}
+
+#topBtn.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* =====================================================
+   RESPONSIVE TABLET
+===================================================== */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-description{
+        margin:auto;
+    }
+
+    .hero-buttons,
+    .socials{
+        justify-content:center;
+    }
+
+    .profile-area{
+        margin-top:20px;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .skills-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .projects{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* =====================================================
+   RESPONSIVE MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    section{
+        padding:80px 0;
+    }
+
+    nav{
+        height:70px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        padding:25px;
+        flex-direction:column;
+        gap:22px;
+        background:var(--bg2);
+        border-bottom:1px solid var(--border);
+        transform:translateY(-150%);
+        transition:.4s;
+    }
+
+    .nav-links.active{
+        transform:translateY(0);
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:-2px;
+    }
+
+    .hero-role{
+        font-size:20px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .profile-card{
+        padding:25px;
+    }
+
+    .profile-image{
+        width:180px;
+        height:180px;
+    }
+
+    .skills-grid,
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-wrapper{
+        padding:22px;
+    }
+
+    .timeline-item{
+        margin-left:45px;
+    }
+
+    .timeline::before{
+        left:10px;
+    }
+
+    .timeline-item::before{
+        left:-43px;
+    }
+
+}
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media(max-width:400px){
+
+    .container{
+        width:94%;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .profile-image{
+        width:155px;
+        height:155px;
+    }
+
+    .section-heading h2{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <canvas id="particles"></canvas>
+</div>
+
+
+<!-- NAVBAR -->
+<header id="header">
+<div class="container">
+
+<nav>
+
+<a href="#home" class="logo">
+    Aakash<span>.</span>
+</a>
+
+<ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="nav-actions">
+
+<button class="icon-btn" id="themeBtn">
+    ☀️
+</button>
+
+<button class="icon-btn menu-btn" id="menuBtn">
+    ☰
+</button>
+
+</div>
+
+</nav>
+
+</div>
+</header>
+
+
+<!-- HERO -->
+<section id="home">
+
+<div class="container hero">
+
+<div class="hero-content reveal">
+
+<div class="badge">
+    <span class="status-dot"></span>
+    Available for Opportunities
+</div>
+
+<h1>
+    Hi, I'm <br>
+    <span class="gradient">Aakash Kumar</span>
+</h1>
+
+<div class="hero-role">
+    I'm a <span id="typing"></span>
+</div>
+
+<p class="hero-description">
+    B.Tech student passionate about Web Development,
+    Cloud Computing and Data Analytics. I enjoy learning
+    modern technologies and building practical projects.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#projects" class="btn btn-primary">
+    View My Work →
+</a>
+
+<a href="#contact" class="btn">
+    Let's Connect
+</a>
+
+</div>
+
+<div class="socials">
+
+<a href="#" title="GitHub">GH</a>
+<a href="#" title="LinkedIn">in</a>
+<a href="#" title="Instagram">IG</a>
+
+</div>
+
+</div>
+
+
+<div class="profile-area reveal">
+
+<div class="profile-card glass">
+
+<div class="profile-image">
+
+<!--
+    APNI PHOTO LAGANE KE LIYE:
+
+    1. images folder banao
+    2. apni photo ka naam profile.jpg rakho
+    3. neeche wala placeholder delete karo
+    4. <img src="images/profile.jpg"> use karo
+
+-->
+
+<img src="images/profile.jpeg" alt="Aakash Kumar">
+
+</div>
+
+<h3>Aakash Kumar</h3>
+
+<p>
+    Developer • Cloud Learner • Data Enthusiast
+</p>
+
+<div class="profile-tags">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>AWS</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <div class="mini">About Me</div>
+    <h2>Turning Ideas Into Reality</h2>
+    <p>
+        A little introduction about my journey and interests.
+    </p>
+</div>
+
+<div class="about-grid">
+
+<div class="about-text reveal">
+
+<h3>Learning. Building. Growing. 🚀</h3>
+
+<p>
+I'm a B.Tech student interested in software development,
+cloud computing, data analytics and modern web technologies.
+</p>
+
+<p>
+My current focus is on strengthening my technical skills,
+creating real-world projects and preparing for internship
+and placement opportunities.
+</p>
+
+<a href="#contact" class="btn btn-primary">
+    Let's Work Together
+</a>
+
+</div>
+
+
+<div class="stats reveal">
+
+<div class="stat glass">
+    <h3>6+</h3>
+    <p>Projects</p>
+</div>
+
+<div class="stat glass">
+    <h3>10+</h3>
+    <p>Technologies</p>
+</div>
+
+<div class="stat glass">
+    <h3>∞</h3>
+    <p>Learning</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <div class="mini">Skills</div>
+    <h2>My Tech Stack</h2>
+    <p>
+        Technologies and tools I'm learning and working with.
+    </p>
+</div>
+
+<div class="skills-grid">
+
+<div class="skill glass reveal">
+    <div class="skill-icon">🌐</div>
+    <h3>HTML & CSS</h3>
+    <p>Responsive websites and modern UI design.</p>
+    <div class="progress">
+        <span style="--level:90%"></span>
+    </div>
+</div>
+
+<div class="skill glass reveal">
+    <div class="skill-icon">⚡</div>
+    <h3>JavaScript</h3>
+    <p>Interactive websites and frontend functionality.</p>
+    <div class="progress">
+        <span style="--level:75%"></span>
+    </div>
+</div>
+
+<div class="skill glass reveal">
+    <div class="skill-icon">☁️</div>
+    <h3>AWS</h3>
+    <p>Cloud computing, EC2, S3 and basic networking.</p>
+    <div class="progress">
+        <span style="--level:65%"></span>
+    </div>
+</div>
+
+<div class="skill glass reveal">
+    <div class="skill-icon">📊</div>
+    <h3>Data Analytics</h3>
+    <p>Excel, Power BI and data visualization.</p>
+    <div class="progress">
+        <span style="--level:70%"></span>
+    </div>
+</div>
+
+<div class="skill glass reveal">
+    <div class="skill-icon">🐍</div>
+    <h3>Python</h3>
+    <p>Programming fundamentals and data processing.</p>
+    <div class="progress">
+        <span style="--level:60%"></span>
+    </div>
+</div>
+
+<div class="skill glass reveal">
+    <div class="skill-icon">🗄️</div>
+    <h3>SQL</h3>
+    <p>Database concepts and query fundamentals.</p>
+    <div class="progress">
+        <span style="--level:60%"></span>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <div class="mini">Portfolio</div>
+    <h2>Featured Projects</h2>
+    <p>
+        Some projects and ideas I've worked on.
+    </p>
+</div>
+
+<div class="projects">
+
+<div class="project glass reveal">
+
+<div class="project-image">
+    🛡️
+</div>
+
+<div class="project-content">
+
+<h3>Internship Scam Detector</h3>
+
+<p>
+A web application concept that analyzes internship
+information and highlights suspicious indicators.
+</p>
+
+<div class="tags">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project glass reveal">
+
+<div class="project-image">
+    📊
+</div>
+
+<div class="project-content">
+
+<h3>Student Analytics Dashboard</h3>
+
+<p>
+Interactive student performance dashboard using
+data analytics and visualization.
+</p>
+
+<div class="tags">
+    <span>Excel</span>
+    <span>Power BI</span>
+    <span>DAX</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project glass reveal">
+
+<div class="project-image">
+    🤖
+</div>
+
+<div class="project-content">
+
+<h3>AI Study Planner</h3>
+
+<p>
+A smart study planning interface designed to help
+students manage their study schedules.
+</p>
+
+<div class="tags">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project glass reveal">
+
+<div class="project-image">
+    🏥
+</div>
+
+<div class="project-content">
+
+<h3>Smart Healthcare System</h3>
+
+<p>
+Healthcare management concept for appointments,
+patients and digital records.
+</p>
+
+<div class="tags">
+    <span>MERN</span>
+    <span>MongoDB</span>
+    <span>API</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project glass reveal">
+
+<div class="project-image">
+    ☁️
+</div>
+
+<div class="project-content">
+
+<h3>AWS Deployment Project</h3>
+
+<p>
+Learning project focused on deploying web applications
+using cloud infrastructure.
+</p>
+
+<div class="tags">
+    <span>AWS</span>
+    <span>EC2</span>
+    <span>Linux</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project glass reveal">
+
+<div class="project-image">
+    📚
+</div>
+
+<div class="project-content">
+
+<h3>Library Management</h3>
+
+<p>
+Web interface for managing books, students and
+issue/return records.
+</p>
+
+<div class="tags">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EDUCATION -->
+<section id="education">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <div class="mini">Journey</div>
+    <h2>My Education</h2>
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item glass reveal">
+
+<small>2023 – Present</small>
+
+<h3>Bachelor of Technology — B.Tech</h3>
+
+<p>
+Currently pursuing B.Tech and developing skills
+in programming, web development and cloud computing.
+</p>
+
+</div>
+
+
+<div class="timeline-item glass reveal">
+
+<small>Higher Secondary</small>
+
+<h3>12th / Intermediate</h3>
+
+<p>
+Completed higher secondary education.
+</p>
+
+</div>
+
+
+<div class="timeline-item glass reveal">
+
+<small>Secondary Education</small>
+
+<h3>10th / High School</h3>
+
+<p>
+Completed secondary school education.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+
+<div class="container">
+
+<div class="section-heading reveal">
+
+<div class="mini">Contact</div>
+
+<h2>Let's Connect</h2>
+
+<p>
+Have a project, opportunity or idea?
+Let's talk.
+</p>
+
+</div>
+
+
+<div class="contact-wrapper glass reveal">
+
+<form id="contactForm">
+
+<div class="contact-grid">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+required
+>
+
+<input
+type="email"
+id="email"
+placeholder="Your Email"
+required
+>
+
+</div>
+
+<textarea
+id="message"
+placeholder="Your Message..."
+required
+></textarea>
+
+<button class="btn btn-primary contact-btn">
+Send Message 🚀
+</button>
+
+<div id="messageStatus"></div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<div class="container">
+
+<p>
+© <span id="year"></span> Aakash Kumar.
+All Rights Reserved.
+</p>
+
+</div>
+
+</footer>
+
+
+<!-- SCROLL TOP -->
+<button id="topBtn">↑</button>
+
+
+<script>
+
+/* =====================================================
+   TYPING EFFECT
+===================================================== */
+
+const words = [
+    "Web Developer",
+    "Cloud Learner",
+    "Data Enthusiast",
+    "B.Tech Student"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typing = document.getElementById("typing");
+
+function typeEffect(){
+
+    const word = words[wordIndex];
+
+    if(!deleting){
+
+        typing.textContent =
+            word.substring(0,charIndex + 1);
+
+        charIndex++;
+
+        if(charIndex === word.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1200);
+
+            return;
+        }
+
+    }else{
+
+        typing.textContent =
+            word.substring(0,charIndex - 1);
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            wordIndex =
+                (wordIndex + 1) % words.length;
+        }
+    }
+
+    setTimeout(
+        typeEffect,
+        deleting ? 45 : 100
+    );
+}
+
+typeEffect();
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
+    menuBtn.textContent =
+        navLinks.classList.contains("active")
+        ? "✕"
+        : "☰";
+
+});
+
+document.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        navLinks.classList.remove("active");
+
+        menuBtn.textContent="☰";
+
+    });
+
+});
+
+
+/* =====================================================
+   DARK LIGHT MODE
+===================================================== */
+
+const themeBtn =
+    document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click",()=>{
+
+    document.body.classList.toggle("light");
+
+    const light =
+        document.body.classList.contains("light");
+
+    themeBtn.textContent =
+        light ? "🌙" : "☀️";
+
+    localStorage.setItem(
+        "theme",
+        light ? "light" : "dark"
+    );
+
+});
+
+if(localStorage.getItem("theme")==="light"){
+
+    document.body.classList.add("light");
+
+    themeBtn.textContent="🌙";
+
+}
+
+
+/* =====================================================
+   HEADER SCROLL
+===================================================== */
+
+const header =
+    document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 40){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+});
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+const reveals =
+    document.querySelectorAll(".reveal");
+
+const skills =
+    document.querySelectorAll(".skill");
+
+function revealOnScroll(){
+
+    reveals.forEach(element=>{
+
+        const top =
+            element.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 80){
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+    skills.forEach(skill=>{
+
+        const top =
+            skill.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 80){
+
+            skill.classList.add("show");
+
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+revealOnScroll();
+
+
+/* =====================================================
+   CONTACT FORM
+===================================================== */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const messageStatus =
+    document.getElementById("messageStatus");
+
+contactForm.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    messageStatus.textContent =
+        `Thanks ${name}! Your message has been received.`;
+
+    contactForm.reset();
+
+    setTimeout(()=>{
+
+        messageStatus.textContent="";
+
+    },4000);
+
+});
+
+
+/* =====================================================
+   SCROLL TOP BUTTON
+===================================================== */
+
+const topBtn =
+    document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 500){
+
+        topBtn.classList.add("show");
+
+    }else{
+
+        topBtn.classList.remove("show");
+
+    }
+
+});
+
+topBtn.addEventListener("click",()=>{
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+const canvas =
+    document.getElementById("particles");
+
+const ctx =
+    canvas.getContext("2d");
+
+let particles=[];
+
+function resizeCanvas(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+for(let i=0;i<55;i++){
+
+    particles.push({
+
+        x:Math.random()*window.innerWidth,
+
+        y:Math.random()*window.innerHeight,
+
+        size:Math.random()*2+1,
+
+        speedX:(Math.random()-.5)*.4,
+
+        speedY:(Math.random()-.5)*.4
+
+    });
+
+}
+
+function animateParticles(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    particles.forEach(p=>{
+
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if(p.x<0 || p.x>canvas.width)
+            p.speedX*=-1;
+
+        if(p.y<0 || p.y>canvas.height)
+            p.speedY*=-1;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            "rgba(120,180,255,.35)";
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(
+        animateParticles
+    );
+
+}
+
+animateParticles();
+
+</script>
+
+</body>
+</html>
+```
